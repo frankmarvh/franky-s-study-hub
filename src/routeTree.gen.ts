@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as FrankyAiRouteImport } from './routes/franky-ai'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
@@ -17,6 +18,11 @@ import { Route as ApiChatRouteImport } from './routes/api/chat'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FrankyAiRoute = FrankyAiRouteImport.update({
@@ -37,12 +43,14 @@ const ApiChatRoute = ApiChatRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/franky-ai': typeof FrankyAiRoute
   '/library': typeof LibraryRoute
   '/api/chat': typeof ApiChatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/franky-ai': typeof FrankyAiRoute
   '/library': typeof LibraryRoute
   '/api/chat': typeof ApiChatRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/franky-ai': typeof FrankyAiRoute
   '/library': typeof LibraryRoute
   '/api/chat': typeof ApiChatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/franky-ai' | '/library' | '/api/chat'
+  fullPaths: '/' | '/auth' | '/franky-ai' | '/library' | '/api/chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/franky-ai' | '/library' | '/api/chat'
-  id: '__root__' | '/' | '/franky-ai' | '/library' | '/api/chat'
+  to: '/' | '/auth' | '/franky-ai' | '/library' | '/api/chat'
+  id: '__root__' | '/' | '/auth' | '/franky-ai' | '/library' | '/api/chat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
   FrankyAiRoute: typeof FrankyAiRoute
   LibraryRoute: typeof LibraryRoute
   ApiChatRoute: typeof ApiChatRoute
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/franky-ai': {
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
   FrankyAiRoute: FrankyAiRoute,
   LibraryRoute: LibraryRoute,
   ApiChatRoute: ApiChatRoute,
