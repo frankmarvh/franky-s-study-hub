@@ -34,7 +34,7 @@ function AdminPage() {
   const [description, setDescription] = useState("");
   const [subject, setSubject] = useState("");
   const [course, setCourse] = useState("");
-  const [materialType, setMaterialType] = useState(TYPES[0]);
+  const [materialType, setMaterialType] = useState<string>("Textbook");
   const [externalUrl, setExternalUrl] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [busy, setBusy] = useState(false);
