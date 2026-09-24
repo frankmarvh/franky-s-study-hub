@@ -1,7 +1,5 @@
 # Franky's Study Hub
 
-I want a  project named Franky's it's a website for online learning where you can get all the study materials whenever you need them any time. And must be a full stack project and also add a section where there's a AI chatbot named Franky's AI that helps you to gather more information from the internet. And the website is a free website there's no paying for anything also you must have an account for you to access the materials online. The chat bot has no text limit you can send as much as you want.
-
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
