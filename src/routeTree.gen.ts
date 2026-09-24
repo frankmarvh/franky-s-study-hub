@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FrankyAiRouteImport } from './routes/franky-ai'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FrankyAiRoute = FrankyAiRouteImport.update({
+  id: '/franky-ai',
+  path: '/franky-ai',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LibraryRoute = LibraryRouteImport.update({
@@ -31,30 +37,34 @@ const ApiChatRoute = ApiChatRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/franky-ai': typeof FrankyAiRoute
   '/library': typeof LibraryRoute
   '/api/chat': typeof ApiChatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/franky-ai': typeof FrankyAiRoute
   '/library': typeof LibraryRoute
   '/api/chat': typeof ApiChatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/franky-ai': typeof FrankyAiRoute
   '/library': typeof LibraryRoute
   '/api/chat': typeof ApiChatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/library' | '/api/chat'
+  fullPaths: '/' | '/franky-ai' | '/library' | '/api/chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/library' | '/api/chat'
-  id: '__root__' | '/' | '/library' | '/api/chat'
+  to: '/' | '/franky-ai' | '/library' | '/api/chat'
+  id: '__root__' | '/' | '/franky-ai' | '/library' | '/api/chat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FrankyAiRoute: typeof FrankyAiRoute
   LibraryRoute: typeof LibraryRoute
   ApiChatRoute: typeof ApiChatRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/franky-ai': {
+      id: '/franky-ai'
+      path: '/franky-ai'
+      fullPath: '/franky-ai'
+      preLoaderRoute: typeof FrankyAiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/library': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FrankyAiRoute: FrankyAiRoute,
   LibraryRoute: LibraryRoute,
   ApiChatRoute: ApiChatRoute,
 }
