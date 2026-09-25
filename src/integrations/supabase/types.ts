@@ -14,8 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      chat_conversations: {
+        Row: {
+          created_at: string
+          id: string
+          messages: Json
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          messages?: Json
+          title?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          messages?: Json
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       materials: {
         Row: {
+          content: string | null
           course: string | null
           created_at: string
           created_by: string | null
@@ -24,12 +52,15 @@ export type Database = {
           file_path: string | null
           file_size_bytes: number | null
           id: string
+          level: string | null
           material_type: string
           subject: string
           title: string
+          unit_code: string | null
           updated_at: string
         }
         Insert: {
+          content?: string | null
           course?: string | null
           created_at?: string
           created_by?: string | null
@@ -38,12 +69,15 @@ export type Database = {
           file_path?: string | null
           file_size_bytes?: number | null
           id?: string
+          level?: string | null
           material_type?: string
           subject: string
           title: string
+          unit_code?: string | null
           updated_at?: string
         }
         Update: {
+          content?: string | null
           course?: string | null
           created_at?: string
           created_by?: string | null
@@ -52,9 +86,11 @@ export type Database = {
           file_path?: string | null
           file_size_bytes?: number | null
           id?: string
+          level?: string | null
           material_type?: string
           subject?: string
           title?: string
+          unit_code?: string | null
           updated_at?: string
         }
         Relationships: []
