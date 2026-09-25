@@ -3,6 +3,7 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { Link } from "@tanstack/react-router";
 import { toast } from "sonner";
+import ReactMarkdown from "react-markdown";
 import { useAuth } from "@/hooks/useAuth";
 
 export function FrankyChat({ tall = false }: { tall?: boolean }) {
@@ -71,9 +72,9 @@ export function FrankyChat({ tall = false }: { tall?: boolean }) {
           ) : (
             <div
               key={message.id}
-              className="max-w-[85%] rounded-2xl rounded-tl-sm border border-border bg-surface px-3.5 py-2.5 text-sm whitespace-pre-wrap text-pretty text-foreground"
+              className="max-w-[85%] space-y-2 rounded-2xl rounded-tl-sm border border-border bg-surface px-3.5 py-2.5 text-sm text-pretty text-foreground [&_a]:text-primary [&_a]:underline [&_code]:font-mono [&_code]:text-[12px] [&_h1]:font-display [&_h1]:font-semibold [&_h2]:font-display [&_h2]:font-semibold [&_h3]:font-display [&_h3]:font-semibold [&_li]:ml-4 [&_li]:list-disc [&_ol_li]:list-decimal [&_strong]:font-semibold"
             >
-              {text}
+              <ReactMarkdown>{text}</ReactMarkdown>
             </div>
           );
         })}
