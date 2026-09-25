@@ -3,6 +3,7 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { Link } from "@tanstack/react-router";
 import { toast } from "sonner";
+import ReactMarkdown from "react-markdown";
 import { useAuth } from "@/hooks/useAuth";
 
 export function FrankyChat({ tall = false }: { tall?: boolean }) {
