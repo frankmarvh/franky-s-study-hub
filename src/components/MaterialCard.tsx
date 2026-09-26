@@ -1,9 +1,15 @@
 import {
   Bookmark,
   BookOpen,
+  Check,
   ExternalLink,
   GraduationCap,
+  LoaderCircle,
 } from "lucide-react";
+
+import {
+  useState,
+} from "react";
 
 import toast from "react-hot-toast";
 
@@ -15,23 +21,52 @@ import type {
   LearningMaterial,
 } from "@/types/material";
 
-interface Props {
+interface MaterialCardProps {
   material:
     LearningMaterial;
+
+  initiallySaved?: boolean;
 }
 
 export default function MaterialCard({
   material,
-}: Props) {
+  initiallySaved = false,
+}: MaterialCardProps) {
+  const [
+    saving,
+    setSaving,
+  ] =
+    useState(false);
+
+  const [
+    saved,
+    setSaved,
+  ] =
+    useState(
+      initiallySaved,
+    );
+
   const handleSave =
     async () => {
+      if (saved) {
+        toast(
+          "This resource is already saved.",
+        );
+
+        return;
+      }
+
       try {
+        setSaving(true);
+
         await saveMaterial(
           material,
         );
 
+        setSaved(true);
+
         toast.success(
-          "Material saved.",
+          "Added to your saved materials.",
         );
       } catch (error) {
         console.error(error);
@@ -41,19 +76,21 @@ export default function MaterialCard({
             ? error.message
             : "Unable to save material.",
         );
+      } finally {
+        setSaving(false);
       }
     };
 
   return (
     <article className="flex h-full flex-col rounded-2xl border border-slate-800 bg-slate-900/70 p-6 transition hover:-translate-y-1 hover:border-blue-500/50">
       <div className="flex items-start justify-between gap-4">
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600/15 text-blue-400">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-600/15 text-blue-400">
           <BookOpen
             size={23}
           />
         </div>
 
-        <span className="rounded-full border border-slate-700 bg-slate-950 px-3 py-1 text-xs text-slate-300">
+        <span className="rounded-full border border-slate-700 bg-slate-950 px-3 py-1 text-xs capitalize text-slate-300">
           {material.type.replace(
             "-",
             " ",
@@ -79,8 +116,10 @@ export default function MaterialCard({
             size={16}
           />
 
-          {material.institution ||
-            material.subject}
+          <span>
+            {material.institution ||
+              material.subject}
+          </span>
         </div>
 
         {material.license && (
@@ -93,10 +132,12 @@ export default function MaterialCard({
 
       <div className="mt-6 grid grid-cols-[1fr_auto] gap-2">
         <a
-          href={material.url}
+          href={
+            material.url
+          }
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold hover:bg-blue-500"
+          className="flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold transition hover:bg-blue-500"
         >
           Open Resource
 
@@ -110,12 +151,39 @@ export default function MaterialCard({
           onClick={
             handleSave
           }
-          title="Save material"
-          className="rounded-xl border border-slate-700 px-4 hover:bg-slate-800"
+          disabled={
+            saving
+          }
+          title={
+            saved
+              ? "Saved"
+              : "Save material"
+          }
+          aria-label={
+            saved
+              ? "Material saved"
+              : "Save material"
+          }
+          className={`flex min-w-12 items-center justify-center rounded-xl border px-3 transition ${
+            saved
+              ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
+              : "border-slate-700 text-slate-300 hover:bg-slate-800"
+          }`}
         >
-          <Bookmark
-            size={18}
-          />
+          {saving ? (
+            <LoaderCircle
+              size={18}
+              className="animate-spin"
+            />
+          ) : saved ? (
+            <Check
+              size={18}
+            />
+          ) : (
+            <Bookmark
+              size={18}
+            />
+          )}
         </button>
       </div>
     </article>
