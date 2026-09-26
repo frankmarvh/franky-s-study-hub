@@ -1108,74 +1108,6 @@ Where possible, the platform should help students discover legitimate free and o
 
 ---
 
-# 🗺️ Development Roadmap
-
-## Phase 1 — Foundation
-
-- [x] React frontend
-- [x] TypeScript
-- [x] Vite
-- [x] Express backend
-- [x] Environment configuration
-- [x] npm workflow
-
-## Phase 2 — Authentication
-
-- [x] Supabase integration
-- [x] Registration
-- [x] Login
-- [x] Protected routes
-- [x] User profiles
-- [x] Admin route structure
-
-## Phase 3 — Learning Resources
-
-- [x] Resource catalog architecture
-- [x] Free external learning resources
-- [x] Search
-- [x] Subject organization
-- [x] Saved-resource architecture
-
-## Phase 4 — Student Experience
-
-- [x] Library
-- [x] Saved resources
-- [x] Responsive navigation
-- [x] Student profile
-- [x] Light mode
-- [x] Dark mode
-- [x] About page
-- [x] Contact page
-- [x] Privacy page
-- [x] Terms page
-- [x] Professional footer
-
-## Phase 5 — Franky's AI
-
-- [x] OpenAI backend integration
-- [x] Authentication protection
-- [x] Conversation history
-- [x] Message storage
-- [x] Markdown rendering
-- [x] Code rendering
-- [x] Copy responses
-- [x] Rate limiting
-
-## Phase 6 — Production
-
-- [ ] Complete admin dashboard
-- [ ] Password reset
-- [ ] Account deletion
-- [ ] Email verification improvements
-- [ ] Production logging
-- [ ] Stronger API validation
-- [ ] Automated tests
-- [ ] Deployment configuration
-- [ ] Production monitoring
-- [ ] Final security review
-
----
-
 # 🔮 Future Features
 
 Possible future additions include:
@@ -1246,14 +1178,6 @@ When reporting a problem, include:
 - Relevant console error
 - Relevant server error
 
-Do not include:
-
-- Passwords
-- API keys
-- Access tokens
-- Service-role keys
-- Private `.env` contents
-
 ---
 
 # 📜 External Educational Resources
@@ -1285,7 +1209,7 @@ Students should verify important information with:
 
 # 👨‍💻 Developer
 
-**Frank Marvin**
+**Marvin Frank**
 
 Franky's Study Hub is being developed as a modern full-stack educational platform combining open educational resources, secure student tools, and AI-assisted learning.
 
