@@ -170,12 +170,22 @@ export function MaterialsLibrary({ limit }: { limit?: number }) {
                 {material.subject} · {formatSize(material.file_size_bytes)}
               </span>
               {user ? (
-                <button
-                  onClick={() => openMaterial(material)}
-                  className="rounded-lg bg-foreground px-3 py-2 font-mono text-[11px] uppercase tracking-[0.1em] text-background transition-colors hover:bg-foreground/85"
-                >
-                  Open
-                </button>
+                material.file_path ? (
+                  <button
+                    onClick={() => openMaterial(material)}
+                    className="rounded-lg bg-foreground px-3 py-2 font-mono text-[11px] uppercase tracking-[0.1em] text-background transition-colors hover:bg-foreground/85"
+                  >
+                    Open
+                  </button>
+                ) : (
+                  <Link
+                    to="/unit/$id"
+                    params={{ id: material.id }}
+                    className="rounded-lg bg-foreground px-3 py-2 font-mono text-[11px] uppercase tracking-[0.1em] text-background transition-colors hover:bg-foreground/85"
+                  >
+                    Read
+                  </Link>
+                )
               ) : (
                 <span className="rounded-lg border border-border bg-background px-3 py-2 font-mono text-[11px] uppercase tracking-[0.1em] text-muted-foreground">
                   Locked
