@@ -1,301 +1,773 @@
 # 🎓 Franky's Study Hub
 
-**Franky's Study Hub** is a modern AI-powered learning platform designed to help students access study materials, organize academic resources, and get instant academic assistance through **Franky's AI**.
+> **Learn smarter. Study better. Build your future.**
 
-The platform combines a searchable study-material library, secure student accounts, AI-powered learning assistance, course/unit content, and an administrative dashboard in one application.
+Franky's Study Hub is a modern full-stack learning platform designed for university students.
 
----
+It combines free and openly available educational resources with **Franky's AI**, an AI-powered study assistant that helps students understand difficult concepts, revise subjects, discover learning resources, and organize their studies.
 
-## ✨ Features
-
-### 📚 Study Materials Library
-
-Students can browse academic resources organized by:
-
-* University
-* Course
-* Unit
-* Year of study
-* Semester
-* Material type
-
-Supported learning resources can include:
-
-* Lecture notes
-* Revision notes
-* Assignments
-* Past papers
-* Course documents
-* AI-generated study notes
+Instead of requiring administrators to upload copyrighted learning materials, Franky's Study Hub connects students to legitimate educational resources that are already freely available on the internet from universities, open textbook projects, documentation websites, and other educational organizations.
 
 ---
 
-### 🤖 Franky's AI
+# ✨ Features
 
-Franky's includes an AI-powered academic assistant designed to help students with their studies.
+## 📚 Free Learning Resources
 
-Students can use Franky's AI to:
+Students can discover educational materials that are already legally and freely available online.
 
-* Ask academic questions
-* Understand difficult concepts
-* Get explanations
-* Summarize topics
-* Generate revision notes
-* Work through study questions
-* Receive step-by-step learning assistance
+Resources may include:
 
-The AI service is handled through a server-side API route so private AI credentials are not exposed directly to the browser.
+- Open textbooks
+- Course materials
+- Programming documentation
+- Mathematics resources
+- Computer science resources
+- Physics resources
+- Engineering resources
+- Business resources
+- Science resources
+- Open educational repositories
+- Tutorials
+- Lecture notes
+- Educational websites
 
----
+Franky's Study Hub does not claim ownership of external resources.
 
-### 🔐 Authentication
-
-Franky's uses Supabase Authentication for secure user accounts.
-
-Supported authentication features include:
-
-* Email registration
-* Email/password login
-* Google authentication
-* Session management
-* Protected user features
-* Role-based authorization
+Each external learning resource remains the property of its respective author, institution, publisher, or provider.
 
 ---
 
-### 👤 User Profiles
+## 🔍 Learning Resource Search
 
-Registered users can maintain individual accounts and securely access authenticated features.
+Students can search the Franky's resource catalog by:
 
-The database includes support for:
+- Subject
+- Topic
+- Resource title
+- Description
+- Course area
+- Keywords
 
-* User profiles
-* User roles
-* Authentication information
-* AI conversations
+The application can direct students to the original educational provider instead of storing unnecessary copies of external resources.
 
 ---
 
-### 🛡️ Role-Based Access Control
+## 🤖 Franky's AI
 
-Franky's supports different permission levels.
+Franky's AI is the built-in academic study assistant.
 
-Current roles include:
+Students can ask questions such as:
 
 ```text
-USER
-ADMIN
+Explain database normalization.
 ```
 
-Normal users can access student features, while administrators receive additional permissions for managing learning resources.
-
-Authorization is enforced using Supabase Row Level Security rather than relying only on frontend checks.
-
----
-
-### ⚙️ Admin Dashboard
-
-Administrators can manage study resources through the admin section.
-
-Admin capabilities include:
-
-* Uploading study materials
-* Creating learning resources
-* Updating materials
-* Deleting materials
-* Managing resource information
-* Managing AI-generated unit content
-
-Database security policies ensure that administrative operations are restricted to authorized administrators.
-
----
-
-### 🔒 Secure File Storage
-
-Study files are stored using Supabase Storage.
-
-Protected materials use temporary signed URLs instead of permanently exposing private storage URLs.
-
-This helps ensure that protected academic resources are only available to authorized users.
-
----
-
-## 🛠️ Technology Stack
-
-### Frontend
-
-* React 19
-* TypeScript
-* TanStack Router
-* TanStack Start
-* TanStack Query
-* Tailwind CSS 4
-* Vite
-* Lucide React
-
-### Backend
-
-* TanStack Start server routes
-* Supabase
-* PostgreSQL
-* Supabase Authentication
-* Supabase Storage
-* Supabase Row Level Security
-
-### Artificial Intelligence
-
-* Vercel AI SDK
-* OpenAI-compatible AI provider
-* Server-side AI API routes
-
----
-
-## 📁 Project Structure
+```text
+Teach me integration from the beginning.
+```
 
 ```text
-franky-s-study-hub/
+What is the difference between a stack and a queue?
+```
+
+```text
+Explain Newton's laws using simple examples.
+```
+
+```text
+Help me understand binary trees.
+```
+
+Franky's AI can provide:
+
+- Topic explanations
+- Step-by-step learning
+- Programming examples
+- Mathematics explanations
+- Revision assistance
+- Concept summaries
+- Examples
+- Study guidance
+- Relevant learning-resource suggestions
+
+AI responses can also render:
+
+- Markdown
+- Headings
+- Lists
+- Tables
+- Code blocks
+- Inline code
+- Links
+
+Students can copy AI answers directly from the interface.
+
+> AI-generated information can contain mistakes. Important academic or technical information should be verified using appropriate sources.
+
+---
+
+# 💬 AI Conversation History
+
+Franky's AI conversations can be stored in the application's database.
+
+Each authenticated user receives their own conversation history.
+
+Features include:
+
+- Start a new conversation
+- Continue an existing conversation
+- View previous conversations
+- Delete conversations
+- Persistent conversation history
+- User-specific access control
+
+Conversation data is protected so one student should not be able to access another student's conversation history.
+
+---
+
+# 🔐 Authentication
+
+Franky's Study Hub uses Supabase Authentication.
+
+Supported authentication can include:
+
+- Email registration
+- Email/password login
+- Google OAuth
+- Secure sessions
+- Logout
+- Protected pages
+- Authentication persistence
+
+Users must authenticate before accessing protected areas of the platform.
+
+---
+
+# 👤 Student Profiles
+
+Each student can maintain a personal profile.
+
+Profile information:
+
+- Full name
+- Email
+- University
+- Course / programme
+- Account information
+
+Students can update their university and course information from the Profile page.
+
+---
+
+# 💾 Saved Learning Materials
+
+Students can save useful resources to their personal library.
+
+This allows students to build their own study collection without uploading copies of the original educational material.
+
+Saved-resource functionality provide:
+
+- Save resource
+- Remove saved resource
+- View saved resources
+- Open original resource
+- Organize useful study links
+
+---
+
+# 🌙 Light & Dark Mode
+
+Franky's Study Hub includes a theme system supporting:
+
+- Light mode
+- Dark mode
+
+The selected theme is stored locally on the student's device.
+
+---
+
+# 📱 Responsive Design
+
+The interface is designed to work across:
+
+- Desktop computers
+- Laptops
+- Tablets
+- Mobile phones
+
+The navigation automatically adapts for smaller displays.
+
+---
+
+# 🛡️ Security
+
+Security is an important part of the project architecture.
+
+The application uses several layers of protection.
+
+### Authentication
+
+Protected routes require an authenticated user.
+
+### Supabase Row Level Security
+
+Database tables can use Supabase Row Level Security policies to ensure users only access data they are authorized to access.
+
+### Server-side AI API Key
+
+The OpenAI API key must never be exposed to frontend code.
+
+Correct:
+
+```env
+OPENAI_API_KEY=your_key
+```
+
+Incorrect:
+
+```env
+VITE_OPENAI_API_KEY=your_key
+```
+
+Variables prefixed with `VITE_` may be bundled into frontend code.
+
+### Service Role Key
+
+The Supabase service role key must only exist on the backend.
+
+Never expose:
+
+```env
+SUPABASE_SERVICE_ROLE_KEY
+```
+
+to the browser.
+
+### Rate Limiting
+
+The Express backend uses API rate limiting to reduce abuse.
+
+AI endpoints can use stricter rate limits because AI requests consume external API resources.
+
+### HTTP Security Headers
+
+The backend uses Helmet to configure common HTTP security headers.
+
+---
+
+# 🏗️ Technology Stack
+
+## Frontend
+
+- React
+- TypeScript
+- Vite
+- React Router
+- Tailwind CSS
+- Lucide React
+- React Hot Toast
+- React Markdown
+- Remark GFM
+
+## Backend
+
+- Node.js
+- Express
+- TypeScript
+- TSX
+- CORS
+- Helmet
+- Express Rate Limit
+
+## Authentication & Database
+
+- Supabase Authentication
+- Supabase PostgreSQL
+- Supabase Row Level Security
+
+## AI
+
+- OpenAI API
+- OpenAI JavaScript/TypeScript SDK
+- Responses API
+
+## Development
+
+- npm
+- TypeScript
+- Vite
+- VS Code
+- Git
+- GitHub
+
+---
+
+# 📂 Project Structure
+
+```text
+frankys-study-hub/
 │
 ├── public/
+│   ├── favicon.ico
+│   └── robots.txt
+│
+├── server/
+│   │
+│   ├── config/
+│   │
+│   ├── data/
+│   │   └── oerCatalog.ts
+│   │
+│   ├── middleware/
+│   │   └── auth.ts
+│   │
+│   ├── routes/
+│   │   ├── chat.ts
+│   │   └── materials.ts
+│   │
+│   ├── services/
+│   │   └── openai.ts
+│   │
+│   ├── utils/
+│   │
+│   └── index.ts
 │
 ├── src/
+│   │
 │   ├── components/
-│   │   ├── ui/
-│   │   ├── FrankyChat.tsx
-│   │   ├── MaterialsLibrary.tsx
+│   │   ├── AIMessage.tsx
+│   │   ├── AdminRoute.tsx
+│   │   ├── AppHeader.tsx
+│   │   ├── ProtectedRoute.tsx
 │   │   ├── SiteFooter.tsx
-│   │   └── SiteHeader.tsx
+│   │   └── ThemeToggle.tsx
+│   │
+│   ├── context/
+│   │   └── ThemeContext.tsx
 │   │
 │   ├── hooks/
 │   │   └── useAuth.tsx
 │   │
 │   ├── integrations/
-│   │   ├── lovable/
 │   │   └── supabase/
+│   │       └── client.ts
 │   │
-│   ├── lib/
-│   │   └── units.functions.ts
+│   ├── pages/
+│   │   ├── AboutPage.tsx
+│   │   ├── AdminPage.tsx
+│   │   ├── AuthPage.tsx
+│   │   ├── ContactPage.tsx
+│   │   ├── FrankyAIPage.tsx
+│   │   ├── HomePage.tsx
+│   │   ├── LibraryPage.tsx
+│   │   ├── NotFoundPage.tsx
+│   │   ├── PrivacyPage.tsx
+│   │   ├── ProfilePage.tsx
+│   │   ├── SavedMaterialsPage.tsx
+│   │   ├── SettingsPage.tsx
+│   │   └── TermsPage.tsx
 │   │
-│   └── routes/
-│       ├── __root.tsx
-│       ├── index.tsx
-│       ├── auth.tsx
-│       ├── library.tsx
-│       ├── franky-ai.tsx
-│       ├── unit.$id.tsx
-│       ├── admin.tsx
-│       │
-│       └── api/
-│           └── chat.ts
+│   ├── services/
+│   │   └── chat.ts
+│   │
+│   ├── types/
+│   │   └── chat.ts
+│   │
+│   ├── App.tsx
+│   ├── index.css
+│   ├── main.tsx
+│   └── vite-env.d.ts
 │
 ├── supabase/
 │   └── migrations/
+│       ├── 001_initial_schema.sql
+│       └── 002_ai_conversations.sql
 │
+├── .env
 ├── .env.example
 ├── .gitignore
+├── index.html
 ├── package.json
+├── package-lock.json
 ├── tsconfig.json
+├── tsconfig.app.json
+├── tsconfig.node.json
 ├── vite.config.ts
 └── README.md
 ```
 
 ---
 
-# 🚀 Getting Started
+# ⚠️ Environment Security
 
-## 1. Prerequisites
+Never upload your real `.env` file to GitHub.
 
-Before running Franky's locally, install:
+Your `.gitignore` should include:
 
-* Node.js 20 or newer
-* npm
-* Git
-* VS Code or another code editor
+```gitignore
+.env
+.env.local
+.env.development.local
+.env.production.local
+.env.*.local
 
-Check your installations:
-
-```bash
-node --version
-npm --version
-git --version
+!.env.example
 ```
+
+Never expose these values publicly:
+
+```text
+OPENAI_API_KEY
+SUPABASE_SERVICE_ROLE_KEY
+```
+
+If a secret is accidentally committed publicly, remove it from use and rotate/revoke it with the relevant provider.
 
 ---
 
-## 2. Clone the Repository
+# 🗄️ Supabase Setup
 
-```bash
-git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
-```
+Create a Supabase project and configure the required database tables.
 
-Enter the project:
-
-```bash
-cd YOUR-REPOSITORY
-```
-
----
-
-## 3. Install Dependencies
-
-Install the required packages:
-
-```bash
-npm install
-```
-
----
-
-## 4. Environment Variables
-
-Create a `.env` file in the root directory.
-
-Example:
-
-```env
-VITE_SUPABASE_URL=your_supabase_project_url
-VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
-```
-
-Server-only credentials should be configured through your deployment environment and must never be exposed through `VITE_` variables.
-
-For example:
-
-```env
-LOVABLE_API_KEY=your_server_side_ai_key
-```
-
-Never expose private API keys in frontend source code.
-
----
-
-## 5. Supabase Setup
-
-Create a Supabase project and configure:
-
-* PostgreSQL database
-* Authentication
-* Storage
-* Row Level Security
-* Required database migrations
-
-The application uses tables including:
+The project may use tables such as:
 
 ```text
 profiles
 user_roles
-materials
+saved_materials
 chat_conversations
+chat_messages
 ```
 
-Apply the migrations located in:
+Database migrations are stored under:
 
 ```text
 supabase/migrations/
 ```
 
+Run the required SQL migrations through your Supabase environment before using the application.
+
 ---
 
-## 6. Start the Development Server
+# 🔒 Row Level Security
+
+Row Level Security should be enabled for user-specific database tables.
+
+For example:
+
+```text
+profiles
+saved_materials
+chat_conversations
+chat_messages
+```
+
+Policies should ensure that authenticated users only access records belonging to them unless an administrator is explicitly authorized.
+
+The frontend alone must never be treated as the security boundary.
+
+---
+
+# 🤖 OpenAI Configuration
+
+Franky's AI runs through the backend.
+
+The browser sends:
+
+```text
+Student question
+        ↓
+Express backend
+        ↓
+Authentication check
+        ↓
+Rate limiting
+        ↓
+OpenAI API
+        ↓
+AI response
+        ↓
+Database
+        ↓
+Student
+```
+
+The frontend should never communicate with OpenAI using a secret API key.
+
+The OpenAI client is configured in:
+
+```text
+server/services/openai.ts
+```
+
+The AI endpoint is implemented in:
+
+```text
+server/routes/chat.ts
+```
+
+---
+
+# 🧠 Franky's AI Conversation Flow
+
+When a student sends a question:
+
+```text
+Student
+   │
+   ▼
+FrankyAIPage.tsx
+   │
+   ▼
+src/services/chat.ts
+   │
+   │ Bearer access token
+   ▼
+POST /api/chat
+   │
+   ▼
+Authentication middleware
+   │
+   ▼
+Load conversation history
+   │
+   ▼
+Find relevant learning resources
+   │
+   ▼
+OpenAI
+   │
+   ▼
+Save AI response
+   │
+   ▼
+Supabase
+   │
+   ▼
+Student interface
+```
+
+This allows Franky's to maintain its own conversation history.
+
+---
+
+# 📚 Learning Resource Architecture
+
+Franky's Study Hub is designed around **external open educational resources**.
+
+The basic architecture is:
+
+```text
+Student
+   │
+   ▼
+Franky's Library
+   │
+   ▼
+Search / filter
+   │
+   ▼
+Resource catalog
+   │
+   ├── Open textbook
+   ├── University resource
+   ├── Documentation
+   ├── Educational website
+   └── Open course
+          │
+          ▼
+Original provider
+```
+
+The platform should provide:
+
+- Resource title
+- Description
+- Subject
+- Topics
+- Source/provider
+- Original URL
+- Resource type
+
+Franky's should not claim ownership of external educational materials.
+
+---
+
+# 💾 Saved Resource Flow
+
+Instead of copying an entire external resource into Franky's servers, the application can save references to useful resources.
+
+Example:
+
+```text
+Student
+   │
+   ▼
+Find resource
+   │
+   ▼
+Save
+   │
+   ▼
+saved_materials
+   │
+   ▼
+Student's personal library
+```
+
+---
+
+# 🔐 Authentication Architecture
+
+Authentication is handled through Supabase.
+
+```text
+Register / Login
+       │
+       ▼
+Supabase Auth
+       │
+       ▼
+Session
+       │
+       ▼
+AuthProvider
+       │
+       ├── Public routes
+       │
+       └── Protected routes
+```
+
+Protected routes include:
+
+```text
+/library
+/saved
+/franky-ai
+/profile
+/settings
+/admin
+```
+
+The `/admin` route requires additional administrator authorization.
+
+---
+
+# 🌐 Application Routes
+
+## Public Routes
+
+```text
+/
+```
+
+Landing page.
+
+```text
+/auth
+```
+
+Login and registration.
+
+```text
+/about
+```
+
+Information about Franky's Study Hub.
+
+```text
+/contact
+```
+
+Contact information.
+
+```text
+/privacy
+```
+
+Privacy policy.
+
+```text
+/terms
+```
+
+Terms of use.
+
+---
+
+## Protected Student Routes
+
+```text
+/library
+```
+
+Learning resource library.
+
+```text
+/saved
+```
+
+Saved learning resources.
+
+```text
+/franky-ai
+```
+
+Franky's AI tutor.
+
+```text
+/profile
+```
+
+Student profile.
+
+```text
+/settings
+```
+
+Application settings.
+
+---
+
+## Administrator Route
+
+```text
+/admin
+```
+
+Administrator dashboard.
+
+This route should require an administrator role.
+
+---
+
+# 🌓 Theme System
+
+Franky's supports:
+
+```text
+Light Mode
+Dark Mode
+```
+
+The theme is managed through:
+
+```text
+src/context/ThemeContext.tsx
+```
+
+and controlled through:
+
+```text
+src/components/ThemeToggle.tsx
+```
+
+The selected preference is stored locally.
+
+---
+
+# ▶️ Running the Development Server
 
 Run:
 
@@ -303,252 +775,428 @@ Run:
 npm run dev
 ```
 
-The terminal will display the local development URL.
+This starts the frontend and backend development servers.
 
-Open that URL in your browser.
-
----
-
-# 🗄️ Database Architecture
-
-Franky's uses Supabase PostgreSQL as its primary database.
-
-The main application flow is:
+Frontend:
 
 ```text
-User
- │
- ▼
-React / TanStack Application
- │
- ├──────────────► Supabase Authentication
- │
- ├──────────────► PostgreSQL Database
- │
- ├──────────────► Supabase Storage
- │
- └──────────────► Franky's AI API
+http://localhost:5173
 ```
 
----
-
-## 🔐 Row Level Security
-
-Supabase Row Level Security protects application data.
-
-Policies control operations such as:
+Backend:
 
 ```text
-SELECT
-INSERT
-UPDATE
-DELETE
+http://localhost:5000
 ```
 
-Administrative database operations are protected using role checks.
-
-This prevents users from gaining administrative privileges simply by modifying frontend code.
-
----
-
-# 📂 Study Material Access
-
-Franky's separates material metadata from protected files.
-
-The basic flow is:
+API health endpoint:
 
 ```text
-Student
-   │
-   ▼
-Browse Library
-   │
-   ▼
-Select Material
-   │
-   ▼
-Authentication Check
-   │
-   ▼
-Generate Temporary Signed URL
-   │
-   ▼
-Access Material
+http://localhost:5000/api/health
 ```
-
-Signed URLs expire automatically after a limited period.
 
 ---
 
-# 🤖 Franky's AI Architecture
+# ⚠️ Do Not Use VS Code Live Server
 
-The AI assistant uses a server-side architecture.
+Franky's Study Hub is a full-stack application.
+
+Do not run the complete project by right-clicking:
 
 ```text
-Student
-   │
-   ▼
-Franky's AI Interface
-   │
-   ▼
-/api/chat
-   │
-   ▼
-AI Provider
-   │
-   ▼
-Generated Response
-   │
-   ▼
-Student
+index.html
 ```
 
-Private AI credentials should always remain on the server.
-
-The AI endpoint should also use authentication and rate limiting before production deployment.
-
----
-
-# 🧠 AI-Generated Unit Content
-
-Franky's can generate study content for units that do not already contain notes.
-
-The process works approximately as follows:
+and selecting:
 
 ```text
-Open Unit
-    │
-    ▼
-Does content exist?
-   / \
- YES  NO
- │     │
- ▼     ▼
-Show   Generate content
-notes      with AI
-            │
-            ▼
-       Save to database
-            │
-            ▼
-       Display content
+Open with Live Server
 ```
 
-Saving generated content prevents unnecessary repeated AI generation requests.
+Live Server only serves static frontend files.
 
----
+It does not run:
 
-# 🔒 Security
+- Express
+- Node.js API routes
+- Server-side OpenAI integration
+- Authentication middleware
+- API rate limiting
+- Backend environment variables
 
-Franky's uses several security mechanisms, including:
-
-* Supabase Authentication
-* PostgreSQL Row Level Security
-* Role-based authorization
-* Protected administrative operations
-* Private environment variables
-* Signed storage URLs
-* Server-side AI requests
-
-Before production deployment, the project should also include:
-
-* AI API authentication
-* API rate limiting
-* Request validation
-* Production logging
-* Improved error handling
-* Security monitoring
-
----
-
-# 🌐 Deployment
-
-Franky's can be deployed using platforms that support modern React/TanStack applications and server-side routes.
-
-Before deployment, configure all required environment variables in the hosting provider.
-
-Do not upload production secrets directly to GitHub.
-
-Run a production build before deploying:
-
-```bash
-npm run build
-```
-
-Resolve all TypeScript or build errors before publishing the application.
-
----
-
-# 🧪 Development Commands
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Start development:
+For development use:
 
 ```bash
 npm run dev
 ```
 
-Create a production build:
+---
+
+# 🛠️ Development Commands
+
+## Start development
+
+```bash
+npm run dev
+```
+
+## Frontend only
+
+```bash
+npm run dev:client
+```
+
+## Backend only
+
+```bash
+npm run dev:server
+```
+
+## Type checking
+
+```bash
+npm run typecheck
+```
+
+## Production build
 
 ```bash
 npm run build
 ```
 
+## Preview frontend production build
+
+```bash
+npm run preview
+```
+
+## Start backend
+
+```bash
+npm start
+```
+
+---
+
+# 🏭 Production Build
+
+Before deployment run:
+
+```bash
+npm install
+```
+
+Then:
+
+```bash
+npm run typecheck
+```
+
+Then:
+
+```bash
+npm run build
+```
+
+The frontend production output is normally created inside:
+
+```text
+dist/
+```
+
+---
+
+# 🌍 Deployment
+
+Because Franky's Study Hub contains both a frontend and backend, deployment requires more than ordinary static hosting.
+
+A common architecture is:
+
+```text
+Internet
+   │
+   ├───────────────┐
+   │               │
+   ▼               ▼
+Frontend         Backend
+Hosting          Node Hosting
+   │               │
+   │               ├── OpenAI
+   │               │
+   │               └── Supabase
+   │
+   └───────────────┐
+                   ▼
+                Student
+```
+
+The frontend can be deployed to a static-capable frontend hosting provider.
+
+The Express backend requires:
+
+- Node.js hosting
+- Container hosting
+- Serverless adaptation
+- VPS
+- Or another environment capable of running the backend
+
+A plain HTML hosting panel without Node.js support cannot run the Express backend by itself.
+
+---
+
+# 🔧 Production Environment Variables
+
+Frontend hosting needs public frontend variables such as:
+
+```env
+VITE_SUPABASE_URL=...
+VITE_SUPABASE_ANON_KEY=...
+VITE_API_URL=https://your-api-domain.example/api
+```
+
+The backend environment requires private values such as:
+
+```env
+PORT=5000
+
+CLIENT_URL=https://your-frontend-domain.example
+
+SUPABASE_URL=...
+
+SUPABASE_SERVICE_ROLE_KEY=...
+
+OPENAI_API_KEY=...
+
+OPENAI_MODEL=...
+
+NODE_ENV=production
+```
+
+Never place backend secrets in frontend environment variables.
+
+---
+
+# 🔁 SPA Routing
+
+Because React Router handles routes such as:
+
+```text
+/library
+/profile
+/franky-ai
+/settings
+```
+
+your frontend hosting provider must be configured to return the React application's `index.html` for unknown frontend routes.
+
+Otherwise refreshing:
+
+```text
+/franky-ai
+```
+
+may incorrectly produce a hosting-provider `404`.
+
+---
+
+# 🧪 Recommended Testing
+
+Before deployment, test:
+
+### Authentication
+
+- Registration
+- Login
+- Logout
+- Session persistence
+- Invalid password
+- Email confirmation
+- OAuth login
+- Protected routes
+
+### Library
+
+- Search
+- Subject filters
+- External links
+- Save resource
+- Remove saved resource
+
+### Franky's AI
+
+- New conversation
+- Multiple messages
+- Conversation history
+- Refresh persistence
+- Delete conversation
+- Markdown
+- Code blocks
+- Tables
+- Copy response
+- Rate limiting
+- Unauthenticated requests
+
+### Profile
+
+- Update name
+- Update university
+- Update programme
+- Refresh and verify persistence
+
+### Theme
+
+- Light mode
+- Dark mode
+- Refresh persistence
+
+### Security
+
+- Student A cannot access Student B's data
+- Non-admin cannot access administrator data
+- OpenAI key is not visible in browser code
+- Service-role key is not visible in browser code
+- API rejects invalid authentication tokens
+
+---
+
+# 🛡️ Production Security Checklist
+
+Before making Franky's public:
+
+- [ ] `.env` is ignored by Git
+- [ ] No API keys exist in GitHub history
+- [ ] Supabase RLS is enabled
+- [ ] RLS policies have been tested
+- [ ] OpenAI API key exists only on backend
+- [ ] Supabase service-role key exists only on backend
+- [ ] Backend validates authentication
+- [ ] AI endpoint has rate limiting
+- [ ] CORS only allows approved production origins
+- [ ] HTTPS is enabled
+- [ ] Error messages do not expose secrets
+- [ ] Admin authorization is enforced server-side/database-side
+- [ ] Dependencies are updated
+- [ ] Production environment variables are configured
+- [ ] Account deletion is implemented before public launch if required
+- [ ] Privacy policy matches the actual production data flow
+
+---
+
+# 🎯 Design Goals
+
+Franky's Study Hub is designed around five principles:
+
+### 1. Simple
+
+Students should be able to find learning resources without navigating a complicated interface.
+
+### 2. Useful
+
+Features should solve real study problems.
+
+### 3. Secure
+
+Private user information must remain protected.
+
+### 4. Educational
+
+Franky's AI should help students understand concepts rather than simply produce answers without explanation.
+
+### 5. Open
+
+Where possible, the platform should help students discover legitimate free and open educational resources.
+
 ---
 
 # 🗺️ Development Roadmap
 
-Planned improvements include:
+## Phase 1 — Foundation
 
-* Persistent Franky's AI conversation history
-* New Chat functionality
-* Previous conversation sidebar
-* AI rate limiting
-* Protected AI API authentication
-* Improved search
-* Material filtering
-* Student dashboard
-* User profile management
-* Improved admin dashboard
-* AI-generated quizzes
-* Study progress tracking
-* Bookmarks and saved materials
-* Improved mobile experience
-* Notifications
-* Better error handling
-* Automated testing
-* Production monitoring
+- [x] React frontend
+- [x] TypeScript
+- [x] Vite
+- [x] Express backend
+- [x] Environment configuration
+- [x] npm workflow
+
+## Phase 2 — Authentication
+
+- [x] Supabase integration
+- [x] Registration
+- [x] Login
+- [x] Protected routes
+- [x] User profiles
+- [x] Admin route structure
+
+## Phase 3 — Learning Resources
+
+- [x] Resource catalog architecture
+- [x] Free external learning resources
+- [x] Search
+- [x] Subject organization
+- [x] Saved-resource architecture
+
+## Phase 4 — Student Experience
+
+- [x] Library
+- [x] Saved resources
+- [x] Responsive navigation
+- [x] Student profile
+- [x] Light mode
+- [x] Dark mode
+- [x] About page
+- [x] Contact page
+- [x] Privacy page
+- [x] Terms page
+- [x] Professional footer
+
+## Phase 5 — Franky's AI
+
+- [x] OpenAI backend integration
+- [x] Authentication protection
+- [x] Conversation history
+- [x] Message storage
+- [x] Markdown rendering
+- [x] Code rendering
+- [x] Copy responses
+- [x] Rate limiting
+
+## Phase 6 — Production
+
+- [ ] Complete admin dashboard
+- [ ] Password reset
+- [ ] Account deletion
+- [ ] Email verification improvements
+- [ ] Production logging
+- [ ] Stronger API validation
+- [ ] Automated tests
+- [ ] Deployment configuration
+- [ ] Production monitoring
+- [ ] Final security review
 
 ---
 
-# 🔮 Future Vision
+# 🔮 Future Features
 
-Franky's aims to become a complete digital learning environment where students can:
+Possible future additions include:
 
-```text
-Learn
-  +
-Revise
-  +
-Ask AI
-  +
-Access Notes
-  +
-Find Past Papers
-  +
-Practice Questions
-  +
-Track Progress
-  =
-Franky's
-```
-
-The long-term goal is to combine academic resources and artificial intelligence into one secure and easy-to-use learning platform.
+- Study planner
+- Revision timetable
+- Flashcards
+- AI-generated quizzes
+- Practice questions
+- Progress tracking
+- Course dashboards
+- Study streaks
+- Resource ratings
+- Resource recommendations
+- Better academic search
+- Citation tools
+- AI conversation search
+- Export study notes
+- PWA support
+- Offline saved-resource metadata
+- University-specific resource collections
 
 ---
 
@@ -556,61 +1204,114 @@ The long-term goal is to combine academic resources and artificial intelligence 
 
 Contributions are welcome.
 
-To contribute:
-
-1. Fork the repository.
-2. Create a new branch.
-3. Make your changes.
-4. Test the application.
-5. Commit your changes.
-6. Push your branch.
-7. Open a Pull Request.
-
-Example:
+A typical contribution workflow is:
 
 ```bash
-git checkout -b feature/new-feature
-git add .
-git commit -m "Add new feature"
-git push origin feature/new-feature
+git checkout -b feature/your-feature
 ```
 
+Make your changes.
+
+Then:
+
+```bash
+git add .
+```
+
+Commit:
+
+```bash
+git commit -m "Add new feature"
+```
+
+Push:
+
+```bash
+git push origin feature/your-feature
+```
+
+Then open a pull request.
+
 ---
 
-# 🐛 Reporting Issues
+# 🐛 Reporting Problems
 
-If you discover a bug, open a GitHub Issue and include:
+When reporting a problem, include:
 
-* Description of the problem
-* Steps to reproduce it
-* Expected behavior
-* Actual behavior
-* Screenshots where applicable
-* Browser/device information
-* Relevant console errors
+- What happened
+- What you expected
+- Steps to reproduce it
+- Browser
+- Operating system
+- Relevant console error
+- Relevant server error
 
-Do **not** include API keys, passwords, access tokens, or other private credentials in an issue.
+Do not include:
+
+- Passwords
+- API keys
+- Access tokens
+- Service-role keys
+- Private `.env` contents
 
 ---
 
-# 📄 License
+# 📜 External Educational Resources
 
-This project is intended for educational and development purposes.
+Franky's Study Hub may provide links to educational resources hosted by third parties.
 
-Add a `LICENSE` file to the repository before public distribution if you want to define explicit reuse, modification, and redistribution terms.
+Those materials remain subject to the copyright, licensing terms, privacy policies, and terms of their respective providers.
+
+Franky's Study Hub should link to original sources wherever practical and should not represent third-party resources as being owned by Franky's.
+
+---
+
+# ⚖️ Disclaimer
+
+Franky's Study Hub is an educational support platform.
+
+AI-generated responses may be incomplete or incorrect and should not automatically be treated as authoritative academic information.
+
+Students should verify important information with:
+
+- Course instructors
+- Official documentation
+- Textbooks
+- University materials
+- Peer-reviewed sources
+- Other appropriate academic references
 
 ---
 
 # 👨‍💻 Developer
 
-Developed by **Frank Marvin**.
+**Frank Marvin**
 
-Franky's is built with the goal of making university learning resources and AI-powered academic assistance easier to access from one platform.
+Franky's Study Hub is being developed as a modern full-stack educational platform combining open educational resources, secure student tools, and AI-assisted learning.
 
 ---
 
-## ⭐ Support Franky's
+# 📄 License
 
-If you find the project useful, consider starring the repository on GitHub.
+Add the project's chosen license in:
+
+```text
+LICENSE
+```
+
+before public distribution.
+
+If the repository contains third-party resources, libraries, icons, or other external material, their respective licenses still apply.
+
+---
+
+# 💙 Franky's Study Hub
+
+```text
+Discover.
+Understand.
+Practice.
+Learn.
+```
 
 **Learn smarter. Study better. Build your future with Franky's. 🎓**
