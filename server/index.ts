@@ -5,25 +5,30 @@ import cors from "cors";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 
-import materialsRouter
-  from "./routes/materials.js";
+import materialsRouter from "./routes/materials.js";
+import chatRouter from "./routes/chat.js";
 
-const app =
-  express();
+const app = express();
 
 const PORT =
-  Number(
-    process.env.PORT,
-  ) || 5000;
+  Number(process.env.PORT) || 5000;
 
 const CLIENT_URL =
   process.env.CLIENT_URL ||
   "http://localhost:5173";
 
+// ============================================================
+// EXPRESS CONFIGURATION
+// ============================================================
+
 app.set(
   "trust proxy",
   1,
 );
+
+// ============================================================
+// SECURITY MIDDLEWARE
+// ============================================================
 
 app.use(
   helmet(),
@@ -31,12 +36,14 @@ app.use(
 
 app.use(
   cors({
-    origin:
-      CLIENT_URL,
-
+    origin: CLIENT_URL,
     credentials: true,
   }),
 );
+
+// ============================================================
+// BODY PARSERS
+// ============================================================
 
 app.use(
   express.json({
@@ -51,6 +58,10 @@ app.use(
   }),
 );
 
+// ============================================================
+// GENERAL API RATE LIMITER
+// ============================================================
+
 const generalLimiter =
   rateLimit({
     windowMs:
@@ -63,7 +74,17 @@ const generalLimiter =
 
     legacyHeaders:
       false,
+
+    message: {
+      success: false,
+      message:
+        "Too many requests. Please try again later.",
+    },
   });
+
+// ============================================================
+// MATERIAL SEARCH RATE LIMITER
+// ============================================================
 
 const searchLimiter =
   rateLimit({
@@ -80,16 +101,47 @@ const searchLimiter =
 
     message: {
       success: false,
-
       message:
         "Too many searches. Please wait a moment.",
     },
   });
 
+// ============================================================
+// FRANKY'S AI RATE LIMITER
+// ============================================================
+
+const aiLimiter =
+  rateLimit({
+    windowMs:
+      60 * 1000,
+
+    limit: 10,
+
+    standardHeaders:
+      "draft-8",
+
+    legacyHeaders:
+      false,
+
+    message: {
+      success: false,
+      message:
+        "You are sending messages too quickly. Please wait a moment.",
+    },
+  });
+
+// ============================================================
+// APPLY GENERAL API RATE LIMIT
+// ============================================================
+
 app.use(
   "/api",
   generalLimiter,
 );
+
+// ============================================================
+// ROOT API ROUTE
+// ============================================================
 
 app.get(
   "/api",
@@ -105,30 +157,68 @@ app.get(
 
       message:
         "Franky's API is running.",
+
+      services: {
+        materials:
+          "enabled",
+
+        ai:
+          "enabled",
+      },
     });
   },
 );
 
+// ============================================================
+// HEALTH CHECK
+// ============================================================
+
 app.get(
   "/api/health",
   (_req, res) => {
-    res.json({
+    res.status(200).json({
       success: true,
 
       status:
         "healthy",
 
+      application:
+        "Franky's Study Hub",
+
       timestamp:
         new Date().toISOString(),
+
+      environment:
+        process.env.NODE_ENV ||
+        "development",
     });
   },
 );
+
+// ============================================================
+// MATERIAL ROUTES
+// ============================================================
 
 app.use(
   "/api/materials",
   searchLimiter,
   materialsRouter,
 );
+
+// ============================================================
+// FRANKY'S AI ROUTES
+// ============================================================
+
+app.use(
+  "/api/chat",
+  aiLimiter,
+  chatRouter,
+);
+
+// ============================================================
+// 404 HANDLER
+// IMPORTANT: Keep this AFTER all valid routes.
+// ============================================================
 
 app.use(
   (_req, res) => {
@@ -141,6 +231,11 @@ app.use(
   },
 );
 
+// ============================================================
+// GLOBAL ERROR HANDLER
+// IMPORTANT: Keep this last.
+// ============================================================
+
 app.use(
   (
     error: Error,
@@ -148,7 +243,10 @@ app.use(
     res: express.Response,
     _next: express.NextFunction,
   ) => {
-    console.error(error);
+    console.error(
+      "Server error:",
+      error,
+    );
 
     res.status(500).json({
       success: false,
@@ -162,25 +260,30 @@ app.use(
   },
 );
 
+// ============================================================
+// START SERVER
+// ============================================================
+
 app.listen(
   PORT,
   "0.0.0.0",
   () => {
     console.log("");
-    console.log(
-      "======================================",
-    );
-
-    console.log(
-      "      FRANKY'S STUDY HUB",
-    );
 
     console.log(
       "======================================",
     );
 
     console.log(
-      `API: http://localhost:${PORT}`,
+      "       FRANKY'S STUDY HUB API",
+    );
+
+    console.log(
+      "======================================",
+    );
+
+    console.log(
+      `Server: http://localhost:${PORT}`,
     );
 
     console.log(
@@ -188,11 +291,44 @@ app.listen(
     );
 
     console.log(
-      "OER material search enabled",
+      `Materials: http://localhost:${PORT}/api/materials`,
+    );
+
+    console.log(
+      `AI: http://localhost:${PORT}/api/chat`,
+    );
+
+    console.log(
+      `Environment: ${
+        process.env.NODE_ENV ||
+        "development"
+      }`,
+    );
+
+    console.log(
+      "--------------------------------------",
+    );
+
+    console.log(
+      "✓ OER material search enabled",
+    );
+
+    console.log(
+      "✓ Franky's AI enabled",
+    );
+
+    console.log(
+      "✓ API rate limiting enabled",
+    );
+
+    console.log(
+      "✓ Security headers enabled",
     );
 
     console.log(
       "======================================",
     );
+
+    console.log("");
   },
 );
