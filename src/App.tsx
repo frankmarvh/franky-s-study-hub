@@ -7,7 +7,6 @@ import {
 import HomePage from "@/pages/HomePage";
 import AuthPage from "@/pages/AuthPage";
 import LibraryPage from "@/pages/LibraryPage";
-import MaterialPage from "@/pages/MaterialPage";
 import FrankyAIPage from "@/pages/FrankyAIPage";
 import AdminPage from "@/pages/AdminPage";
 import NotFoundPage from "@/pages/NotFoundPage";
@@ -34,15 +33,6 @@ export default function App() {
           element={
             <ProtectedRoute>
               <LibraryPage />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/material/:id"
-          element={
-            <ProtectedRoute>
-              <MaterialPage />
             </ProtectedRoute>
           }
         />
