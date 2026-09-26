@@ -1,3 +1,5 @@
+import AIMessage from "@/components/AIMessage";
+
 import {
   useEffect,
   useRef,
@@ -15,7 +17,6 @@ import {
   Plus,
   Send,
   Trash2,
-  User,
   X,
 } from "lucide-react";
 
@@ -554,7 +555,7 @@ export default function FrankyAIPage() {
                     (
                       message,
                     ) => (
-                      <Message
+                      <AIMessage
                         key={
                           message.id
                         }
