@@ -2,7 +2,7 @@
 @source "../src";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 /*
  * Franky's design system — "Kinetic glass".
@@ -88,6 +88,37 @@
   --tint-mint-foreground: hsl(160 70% 25%);
   --tint-amber: hsl(42 92% 90%);
   --tint-amber-foreground: hsl(32 80% 32%);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: hsl(0 0% 4%);
+  --foreground: hsl(210 20% 96%);
+  --surface: hsl(0 0% 8%);
+  --glass: hsl(0 0% 6% / 0.7);
+  --card: hsl(0 0% 8%);
+  --card-foreground: hsl(210 20% 96%);
+  --popover: hsl(0 0% 8%);
+  --popover-foreground: hsl(210 20% 96%);
+  --primary: hsl(200 92% 55%);
+  --primary-foreground: hsl(0 0% 4%);
+  --secondary: hsl(0 0% 12%);
+  --secondary-foreground: hsl(210 20% 96%);
+  --muted: hsl(0 0% 12%);
+  --muted-foreground: hsl(215 12% 62%);
+  --accent: hsl(200 60% 14%);
+  --accent-foreground: hsl(200 92% 75%);
+  --destructive: hsl(4 80% 58%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(0 0% 100% / 0.1);
+  --input: hsl(0 0% 100% / 0.14);
+  --ring: hsl(200 92% 55% / 0.5);
+  --tint-sky: hsl(203 60% 16%);
+  --tint-sky-foreground: hsl(203 90% 75%);
+  --tint-mint: hsl(158 45% 14%);
+  --tint-mint-foreground: hsl(158 60% 70%);
+  --tint-amber: hsl(38 55% 15%);
+  --tint-amber-foreground: hsl(42 90% 70%);
 }
 
 @theme {
