@@ -4,15 +4,32 @@ import {
   Routes,
 } from "react-router-dom";
 
-import HomePage from "@/pages/HomePage";
-import AuthPage from "@/pages/AuthPage";
-import LibraryPage from "@/pages/LibraryPage";
-import FrankyAIPage from "@/pages/FrankyAIPage";
-import AdminPage from "@/pages/AdminPage";
-import NotFoundPage from "@/pages/NotFoundPage";
+import HomePage
+  from "@/pages/HomePage";
 
-import ProtectedRoute from "@/components/ProtectedRoute";
-import AdminRoute from "@/components/AdminRoute";
+import AuthPage
+  from "@/pages/AuthPage";
+
+import LibraryPage
+  from "@/pages/LibraryPage";
+
+import SavedMaterialsPage
+  from "@/pages/SavedMaterialsPage";
+
+import FrankyAIPage
+  from "@/pages/FrankyAIPage";
+
+import AdminPage
+  from "@/pages/AdminPage";
+
+import NotFoundPage
+  from "@/pages/NotFoundPage";
+
+import ProtectedRoute
+  from "@/components/ProtectedRoute";
+
+import AdminRoute
+  from "@/components/AdminRoute";
 
 export default function App() {
   return (
@@ -20,12 +37,16 @@ export default function App() {
       <Routes>
         <Route
           path="/"
-          element={<HomePage />}
+          element={
+            <HomePage />
+          }
         />
 
         <Route
           path="/auth"
-          element={<AuthPage />}
+          element={
+            <AuthPage />
+          }
         />
 
         <Route
@@ -33,6 +54,15 @@ export default function App() {
           element={
             <ProtectedRoute>
               <LibraryPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/saved"
+          element={
+            <ProtectedRoute>
+              <SavedMaterialsPage />
             </ProtectedRoute>
           }
         />
@@ -57,7 +87,9 @@ export default function App() {
 
         <Route
           path="*"
-          element={<NotFoundPage />}
+          element={
+            <NotFoundPage />
+          }
         />
       </Routes>
     </BrowserRouter>
